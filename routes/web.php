@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\uploadController;
 use App\Http\controllers\customerController;
+use App\Http\controllers\SupplierController;
 use Illuminate\Support\Facades\App;
+use App\http\controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +35,21 @@ Route::post('/change-language', function (\Illuminate\Http\Request $request) {
     return back(); // redirect back to same page
 })->name('change.language');
 Route:: view('trans','trans');
+// --------------Crud App-------------
 Route::view('/','insert_data');
 Route:: post('add',[customerController::class,'add_customer']);
 
  Route::get('list',[customerController:: class,'customer_list']);
 Route::get('delete/{id}',[customerController:: class,'delete']);
+Route::get('edit/{id}',[customerController:: class,'edit']);
+Route::put('edit-customer/{id}',[customerController:: class,'editcustomer']);
+Route::get('search',[customerController:: class,'search']);
+Route::get('getdata/{key:name}',[customerController:: class,'getdata']);
+
+// --------email send----------
+Route::post('send-mail',[MailController:: class,'sendEmail']);
+Route::view('send-email','email-send');
+
+// --------user Ajax in Crud operation-------------
+Route::get('store',[SupplierController::class,'store']);
+Route::view('talvind','talvind');

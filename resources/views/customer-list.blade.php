@@ -1,5 +1,6 @@
 @include('common.header');
 <div class="container">
+
     <div class="d-flex justify-content-end mt-2 mb-2">
     <a href="{{url('/')}}" class="btn btn-primary btn-lg rounded ">Add New</a>
     </div>
@@ -31,6 +32,7 @@
                 <a href="{{ url('delete/' . $customer_data->id) }}" class="btn btn-danger btn-sm">
                     <span class="fa fa-trash"></span>
                 </a>
+                <a href="{{url('edit/' . $customer_data->id)}}" class="btn btn-warning btn-sm"><span class="fa fa-pencil"></span></a>
             </td>
         </tr>
     @empty
@@ -41,5 +43,13 @@
 </tbody>
 
 </table>
+<div class="d-flex justify-content-end">
+    {{ $customer->links() }}
+</div>
+<style>
+    .w-5.h-5{
+        width: 20px;
+    }
+</style>
 </div>
     @include('common.footer',['foot'=>"This is my footer"]);
