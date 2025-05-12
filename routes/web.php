@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\uploadController;
 use App\Http\controllers\customerController;
 use App\Http\controllers\SupplierController;
+use App\Http\controllers\StudentController;
 use Illuminate\Support\Facades\App;
 use App\http\controllers\MailController;
 
@@ -53,3 +54,8 @@ Route::view('send-email','email-send');
 // --------user Ajax in Crud operation-------------
 Route::get('store',[SupplierController::class,'store']);
 Route::view('talvind','talvind');
+
+Route::view('form', 'form');
+Route::Post('add-student',[StudentController::class,'addstudent'])->name('addstu');
+Route::get('get-all-student',[StudentController::class,'getstudents'])->name('getstudents');
+Route::view('get-student','student');
